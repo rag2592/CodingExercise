@@ -34,18 +34,13 @@ public class findAnagrams{
 		}
 		System.out.println(list.get(list.size()-1));
     }
-    public static void main(String[] args) throws Exception{
-        if(args.length < 1)
-		{
-			System.out.println("Invalid Arguments!");
-			return;
-		}
-		long start = 0, end = 0;
+	public static void generateCommandLine(String filename) throws Exception{
+		long start = 0,end = 0;
 		try{
 			System.out.println("Welcome to the Anagram Finder");
 			System.out.println("-----------------------------");
 			start = System.nanoTime();
-			loadDictionary(args[0]);
+			loadDictionary(filename);
 			end = System.nanoTime();
 			System.out.println("Dictionary loaded in "+((end-start)/1000000) + " ms");
 			Scanner in = new Scanner(System.in);
@@ -71,7 +66,16 @@ public class findAnagrams{
 		}catch (FileNotFoundException e){
 			System.out.println("No File Found");
 			return;
+		}	
+		
+	}
+    public static void main(String[] args) throws Exception{
+        if(args.length < 1)
+		{
+			System.out.println("Invalid Arguments!");
+			return;
 		}
+		generateCommandLine(args[0]);
     }
 }
 
